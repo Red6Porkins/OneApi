@@ -31,7 +31,7 @@ try
     var sdkService = host.Services.GetRequiredService<IOneApi>();
     sdkService.Configure("2t7oclBeJJUb8i2wkOUl");
 
-    var books = await sdkService.RetrieveAll<Book>();
+    var books = await sdkService.AddPreFilter(new QueryParameter { Field = "_id", Filter = FilterEnum.Equals, Value = "5cf5805fb53e011a64671582" }).RetrieveAll<Book>();
     foreach(var item in books)
     {
         Console.WriteLine(JsonConvert.SerializeObject(item));
